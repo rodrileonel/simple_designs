@@ -11,15 +11,35 @@ class ButtonsPage extends StatelessWidget {
         children: [
           Background(),
           SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Header(),
-                Content()
-              ],
+            bottom: false,
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Header(),
+                  Content(),
+                ],
+              ),
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor:Color.fromRGBO(55,57,84,1),
+          primaryColor: Colors.greenAccent,
+          textTheme: Theme.of(context).textTheme.copyWith(
+            caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1),),
+          ),
+        ),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.calendar_today_rounded), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.piano), label: 'Piano'),
+            BottomNavigationBarItem(icon: Icon(Icons.supervised_user_circle), label: 'User'),
+          ],
+        ),
       ),
     );
   }
